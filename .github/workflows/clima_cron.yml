@@ -1,0 +1,36 @@
+name: Recolector Clima Open-Meteo
+
+on:
+  schedule:
+    # Se ejecuta automáticamente cada 15 minutos
+    - cron: '*/15 * * * *'
+  # Habilita el botón manual "Run workflow" en la web de GitHub
+  workflow_dispatch:
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permiso clave para que el bot pueda guardar el CSV en tu repo
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar script de clima
+        run: python recolector_clima.py
+
+      - name: Guardar cambios y subir al repo
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add datos_clima_bariloche.csv
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: nuevo registro de clima [skip ci]" && git push)
