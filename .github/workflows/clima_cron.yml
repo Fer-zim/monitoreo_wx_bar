@@ -26,7 +26,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar script de clima
-        run: python recolector_clima.py
+        run: python recolector_wx.py
 
       - name: Guardar cambios y subir al repo
         run: |
