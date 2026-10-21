@@ -2,16 +2,6 @@ name: Recolector Clima Open-Meteo
 
 on:
   schedule:
-    # Se ejecuta automáticamente cada 15 minutos
-    - cron: '*/15 * * * *'
-  # Habilita el botón manual "Run workflow" en la web de GitHub
-  workflow_dispatch:
-
-name: Recolector Clima Open-Meteo
-
-on:
-  schedule:
-    # Se ejecuta una vez por hora en el minuto 17 (ej: 01:17, 02:17, 03:17...)
     - cron: '17 * * * *'
   workflow_dispatch:
 
