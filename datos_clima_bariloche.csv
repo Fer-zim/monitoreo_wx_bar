@@ -1,0 +1,2 @@
+timestamp_utc,timestamp_local,temperatura_c,precipitacion_mm,lluvia_mm,nieve_cm,visibilidad_m,viento_kmh,codigo_wmo
+2026-10-21 03:06:28,2026-10-21T00:00,9.4,0.0,0.0,0.0,10000.0,1.1,1
